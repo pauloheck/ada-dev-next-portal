@@ -63,13 +63,15 @@ export default function Teste() {
               name="requisitos"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Informações para criação da story</FormLabel>
                   <FormControl>
-                    <Input placeholder="requisitos" {...field} />
+                    <textarea
+                      placeholder="Descreva os requisitos necessários para a criação da story"
+                      {...field}
+                      className="w-full p-2 border border-gray-300 rounded-md"
+                      rows={5}
+                    />
                   </FormControl>
-                  <FormDescription>
-                    Requisitos necessarios para criação da story
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}

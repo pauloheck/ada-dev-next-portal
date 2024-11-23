@@ -12,9 +12,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState } from "react";
 
 const formSchema = z.object({
   requisitos: z.string().min(20, {
@@ -75,11 +75,13 @@ export default function Teste() {
           <Button type="submit">Gerar</Button>
         </form>
       </Form>
-      {apiResponse ? (
-        <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
-      ) : (
-        <>Resposta</>
-      )}
+      <div className="w-60">
+        {apiResponse ? (
+          <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
+        ) : (
+          <>Resposta</>
+        )}
+      </div>
     </div>
   );
 }

@@ -14,6 +14,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useState } from "react";
 
 const formSchema = z.object({
   requisitos: z.string().min(20, {
@@ -22,7 +23,7 @@ const formSchema = z.object({
 });
 
 export default function Teste() {
-  // 1. Define your form
+  const [apiResponse, setApiResponse] = useState<any>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -44,7 +45,7 @@ export default function Teste() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Resposta da API:", data);
-        // Aqui você pode atualizar o estado para mostrar a resposta da API na interface
+        setApiResponse(data);
       })
       .catch((error) => {
         console.error("Erro ao chamar a API:", error);
@@ -74,7 +75,11 @@ export default function Teste() {
           <Button type="submit">Gerar</Button>
         </form>
       </Form>
-      <>Resposta</>
+      {apiResponse ? (
+        <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
+      ) : (
+        <>Resposta</>
+      )}
     </div>
   );
 }

@@ -37,6 +37,11 @@ export default function RootLayout({
                 </a>
               </li>
               <li>
+                <a href="/architect" className="hover:text-gray-400">
+                  Architect
+                </a>
+              </li>
+              <li>
                 <a href="/story" className="hover:text-gray-400">
                   Create Story
                 </a>

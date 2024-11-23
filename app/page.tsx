@@ -3,7 +3,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800">
       <header className="bg-gray-900 text-white p-4 shadow-md">
         <nav className="container mx-auto flex justify-center">
-          <ul className="flex space-x-4">
+          <ul className="flex space-x-8">
             <li className="text-lg font-bold"><a href="/" className="hover:text-gray-400">AdaDev</a></li>
             <li><a href="/story" className="hover:text-gray-400">Create Story</a></li>
           </ul>

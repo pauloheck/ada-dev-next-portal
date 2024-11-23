@@ -9,6 +9,7 @@ export default function Home() {
             <li><a href="#vision" className="hover:text-gray-400">Visão</a></li>
             <li><a href="#services" className="hover:text-gray-400">Serviços</a></li>
             <li><a href="#contact" className="hover:text-gray-400">Contato</a></li>
+            <li><a href="/story" className="hover:text-gray-400">Create Story</a></li>
           </ul>
         </nav>
       </header>

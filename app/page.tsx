@@ -11,7 +11,8 @@ export default function Home() {
       </header>
       <main className="container mx-auto p-8">
         <section id="mission" className="my-12">
-          <h1 className="text-4xl font-bold mb-4">AdaDev: Transformando o Futuro do Desenvolvimento de Software</h1>
+          <h1 className="text-4xl font-bold mb-4">AdaDev</h1>
+          <h2 className="text-3xl font-semibold mb-4">Transformando o Futuro do Desenvolvimento de Software</h2>
           <p className="text-lg">Capacitar desenvolvedores com IA avançada para otimizar o desenvolvimento de software.</p>
         </section>
         <section id="vision" className="my-12">

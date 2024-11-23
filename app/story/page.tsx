@@ -77,7 +77,14 @@ export default function Teste() {
       </Form>
       <div className="w-60">
         {apiResponse ? (
-          <pre>{JSON.stringify(apiResponse, null, 2)}</pre>
+          <div className="p-4 bg-white shadow-md rounded-md">
+            <h2 className="text-xl font-bold mb-2">{apiResponse.data.title}</h2>
+            <p className="mb-4"><strong>Contexto:</strong> {apiResponse.data.context}</p>
+            <p className="mb-4"><strong>Identificação do Usuário:</strong> {apiResponse.data.user_identification}</p>
+            <p className="mb-4"><strong>Criterios de Aceitação:</strong> {apiResponse.data.acceptance_criteria}</p>
+            <p className="mb-4"><strong>Fluxo da História:</strong> {apiResponse.data.story_flow}</p>
+            <p className="mb-4"><strong>Resultado Esperado:</strong> {apiResponse.data.expected_result}</p>
+          </div>
         ) : (
           <>Resposta</>
         )}

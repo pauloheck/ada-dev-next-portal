@@ -28,7 +28,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="bg-gray-900 text-white p-4 shadow-md">
+          <nav className="container mx-auto flex justify-center">
+            <ul className="flex space-x-8">
+              <li className="text-lg font-bold">
+                <a href="/" className="hover:text-gray-400">
+                  AdaDev
+                </a>
+              </li>
+              <li>
+                <a href="/story" className="hover:text-gray-400">
+                  Create Story
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main className="flex-grow">{children}</main>
+        <footer className="bg-gray-900 text-white p-4 text-center">
+          <p>&copy; 2024 AdaDev. Todos os direitos reservados.</p>
+        </footer>
       </body>
     </html>
   );

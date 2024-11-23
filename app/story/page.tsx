@@ -32,12 +32,22 @@ export default function Teste() {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // implement your submit logic here
-    // call the API http://127.0.0.1:8000/story/create?input=requisitos
-    // use .env to store the api url
-    
-    
-    console.log(values);
+    // Chama a API para criar uma história
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+    fetch(`${apiUrl}/story/create?input=${values.requisitos}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Resposta da API:", data);
+        // Aqui você pode atualizar o estado para mostrar a resposta da API na interface
+      })
+      .catch((error) => {
+        console.error("Erro ao chamar a API:", error);
+      });
   }
 
   return (

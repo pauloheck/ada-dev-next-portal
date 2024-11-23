@@ -33,6 +33,7 @@ export default function Teste() {
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Chama a API para criar uma história
+    console.log("Valores do formulário:", values);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
     fetch(`${apiUrl}/story/create?input=${values.requisitos}`, {
       method: "POST",
@@ -73,7 +74,7 @@ export default function Teste() {
           <Button type="submit">Gerar</Button>
         </form>
       </Form>
-      <>Retorna aqui a resposta da api</>
+      <>Resposta</>
     </div>
   );
 }

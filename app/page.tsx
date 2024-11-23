@@ -5,8 +5,6 @@ export default function Home() {
         <nav className="container mx-auto flex justify-between">
           <div className="text-lg font-bold">AdaDev</div>
           <ul className="flex space-x-4">
-            <li><a href="#services" className="hover:text-gray-400">Serviços</a></li>
-            <li><a href="#contact" className="hover:text-gray-400">Contato</a></li>
             <li><a href="/story" className="hover:text-gray-400">Create Story</a></li>
           </ul>
         </nav>

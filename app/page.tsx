@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 text-gray-800">
       <header className="bg-gray-900 text-white p-4 shadow-md">
         <nav className="container mx-auto flex justify-center">
           <ul className="flex space-x-8">
@@ -17,7 +17,7 @@ export default function Home() {
           </ul>
         </nav>
       </header>
-      <main className="container mx-auto p-8">
+      <main className="container mx-auto p-8 flex-grow">
         <section id="mission" className="my-12">
           <h1 className="text-4xl font-bold mb-4">AdaDev</h1>
           <h2 className="text-3xl font-semibold mb-4">

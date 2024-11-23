@@ -53,7 +53,7 @@ export default function Teste() {
   }
 
   return (
-    <div className="flex justify-center w-40">
+    <div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -75,15 +75,28 @@ export default function Teste() {
           <Button type="submit">Gerar</Button>
         </form>
       </Form>
-      <div className="w-60">
+      <div>
         {apiResponse ? (
           <div className="p-4 bg-white shadow-md rounded-md">
             <h2 className="text-xl font-bold mb-2">{apiResponse.data.title}</h2>
-            <p className="mb-4"><strong>Contexto:</strong> {apiResponse.data.context}</p>
-            <p className="mb-4"><strong>Identificação do Usuário:</strong> {apiResponse.data.user_identification}</p>
-            <p className="mb-4"><strong>Criterios de Aceitação:</strong> {apiResponse.data.acceptance_criteria}</p>
-            <p className="mb-4"><strong>Fluxo da História:</strong> {apiResponse.data.story_flow}</p>
-            <p className="mb-4"><strong>Resultado Esperado:</strong> {apiResponse.data.expected_result}</p>
+            <p className="mb-4">
+              <strong>Contexto:</strong> {apiResponse.data.context}
+            </p>
+            <p className="mb-4">
+              <strong>Identificação do Usuário:</strong>{" "}
+              {apiResponse.data.user_identification}
+            </p>
+            <p className="mb-4">
+              <strong>Criterios de Aceitação:</strong>{" "}
+              {apiResponse.data.acceptance_criteria}
+            </p>
+            <p className="mb-4">
+              <strong>Fluxo da História:</strong> {apiResponse.data.story_flow}
+            </p>
+            <p className="mb-4">
+              <strong>Resultado Esperado:</strong>{" "}
+              {apiResponse.data.expected_result}
+            </p>
           </div>
         ) : (
           <>Resposta</>

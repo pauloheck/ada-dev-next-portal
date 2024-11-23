@@ -53,8 +53,10 @@ export default function Teste() {
   }
 
   return (
-    <div>
-      <Form {...form}>
+    <div className="min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center p-6">
+      <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Criar História</h1>
+        <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
@@ -72,30 +74,28 @@ export default function Teste() {
               </FormItem>
             )}
           />
-          <Button type="submit">Gerar</Button>
+          <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">Gerar</Button>
         </form>
       </Form>
-      <div>
+      </div>
+      <div className="mt-8">
         {apiResponse ? (
-          <div className="p-4 bg-white shadow-md rounded-md">
-            <h2 className="text-xl font-bold mb-2">{apiResponse.data.title}</h2>
-            <p className="mb-4">
-              <strong>Contexto:</strong> {apiResponse.data.context}
+          <div className="p-6 bg-white shadow-lg rounded-lg">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">{apiResponse.data.title}</h2>
+            <p className="mb-4 text-gray-700">
+              <strong className="text-gray-900">Contexto:</strong> {apiResponse.data.context}
             </p>
-            <p className="mb-4">
-              <strong>Identificação do Usuário:</strong>{" "}
-              {apiResponse.data.user_identification}
+            <p className="mb-4 text-gray-700">
+              <strong className="text-gray-900">Identificação do Usuário:</strong> {apiResponse.data.user_identification}
             </p>
-            <p className="mb-4">
-              <strong>Criterios de Aceitação:</strong>{" "}
-              {apiResponse.data.acceptance_criteria}
+            <p className="mb-4 text-gray-700">
+              <strong className="text-gray-900">Criterios de Aceitação:</strong> {apiResponse.data.acceptance_criteria}
             </p>
-            <p className="mb-4">
-              <strong>Fluxo da História:</strong> {apiResponse.data.story_flow}
+            <p className="mb-4 text-gray-700">
+              <strong className="text-gray-900">Fluxo da História:</strong> {apiResponse.data.story_flow}
             </p>
-            <p className="mb-4">
-              <strong>Resultado Esperado:</strong>{" "}
-              {apiResponse.data.expected_result}
+            <p className="mb-4 text-gray-700">
+              <strong className="text-gray-900">Resultado Esperado:</strong> {apiResponse.data.expected_result}
             </p>
           </div>
         ) : (

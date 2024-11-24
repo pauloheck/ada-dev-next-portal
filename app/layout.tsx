@@ -38,7 +38,7 @@ export default function RootLayout({
               </li>
               <li>
                 <a href="/architect" className="hover:text-gray-400">
-                  Create Architect
+                  Create Architecture
                 </a>
               </li>
               <li>

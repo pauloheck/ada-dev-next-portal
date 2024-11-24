@@ -23,6 +23,7 @@ const formSchema = z.object({
 
 export default function ArchitectPage() {
   const [apiResponse, setApiResponse] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,7 +32,7 @@ export default function ArchitectPage() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Valores do formulário:", values);
+    setIsLoading(true);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
     fetch(`${apiUrl}/architect/create?input=${values.requisitos}`, {
       method: "POST",
@@ -46,12 +47,18 @@ export default function ArchitectPage() {
       })
       .catch((error) => {
         console.error("Erro ao chamar a API:", error);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   return (
     <div className="min-h-[80vh] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 flex flex-col items-center justify-center p-6 space-y-8">
-      <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
+      {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div>
+        </div>
+      )}
+      <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8 relative">
         <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Create Architecture</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -73,7 +80,9 @@ export default function ArchitectPage() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">Generate</Button>
+            <Button type="submit" disabled={isLoading} className={`w-full ${isLoading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'} text-white font-bold py-2 px-4 rounded transition duration-300`}>
+              {isLoading ? 'Processing...' : 'Generate'}
+            </Button>
           </form>
         </Form>
       </div>

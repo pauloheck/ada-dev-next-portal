@@ -51,6 +51,11 @@ export default function RootLayout({
                   Create Test
                 </a>
               </li>
+              <li>
+                <a href="/chat" className="hover:text-gray-400">
+                  Chat
+                </a>
+              </li>
             </ul>
           </nav>
         </header>

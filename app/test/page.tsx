@@ -34,7 +34,7 @@ export default function TestPage() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
-    fetch(`${apiUrl}/test/create?input=${values.requisitos}`, {
+    fetch(`${apiUrl}/story/create?input=${values.requisitos}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,24 +86,28 @@ export default function TestPage() {
           </form>
         </Form>
       </div>
-      {apiResponse && (
-        <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg">
-          <h2 className="text-2xl font-bold mb-4 text-gray-800">{apiResponse.data.title}</h2>
-          <p className="mb-4 text-gray-700">
-            <strong className="text-gray-900">Contexto:</strong> {apiResponse.data.context}
-          </p>
-          <p className="mb-4 text-gray-700">
-            <strong className="text-gray-900">Identificação do Usuário:</strong> {apiResponse.data.user_identification}
-          </p>
-          <p className="mb-4 text-gray-700">
-            <strong className="text-gray-900">Criterios de Aceitação:</strong> {apiResponse.data.acceptance_criteria}
-          </p>
-          <p className="mb-4 text-gray-700">
-            <strong className="text-gray-900">Fluxo da História:</strong> {apiResponse.data.story_flow}
-          </p>
-          <p className="mb-4 text-gray-700">
-            <strong className="text-gray-900">Resultado Esperado:</strong> {apiResponse.data.expected_result}
-          </p>
+      {apiResponse && apiResponse.data && apiResponse.data.stories && (
+        <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg space-y-4">
+          {apiResponse.data.stories.map((story: any, index: number) => (
+            <div key={index} className="p-4 bg-gray-100 rounded-md">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">{story.title}</h2>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Contexto:</strong> {story.context}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Identificação do Usuário:</strong> {story.user_identification}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Criterios de Aceitação:</strong> {story.acceptance_criteria}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Fluxo da História:</strong> {story.story_flow}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Resultado Esperado:</strong> {story.expected_result}
+              </p>
+            </div>
+          ))}
         </div>
       )}
     </div>

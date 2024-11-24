@@ -55,7 +55,7 @@ export default function Teste() {
   return (
     <div className="min-h-[80vh] bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 flex flex-col items-center justify-center p-6 space-y-8">
       <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
-        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Criar História</h1>
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Create Story</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -63,10 +63,10 @@ export default function Teste() {
               name="requisitos"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Informações para criação da story</FormLabel>
+                  <FormLabel>Information for story creation</FormLabel>
                   <FormControl>
                     <textarea
-                      placeholder="Descreva os requisitos necessários para a criação da story"
+                      placeholder="Describe the requirements necessary for story creation"
                       {...field}
                       className="w-full p-2 border border-gray-300 rounded-md"
                       rows={5}

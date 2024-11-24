@@ -5,18 +5,17 @@ export default function Home() {
         <section id="mission" className="my-12">
           <h1 className="text-4xl font-bold mb-4">AdaDev</h1>
           <h2 className="text-3xl font-semibold mb-4">
-            Transformando o Futuro do Desenvolvimento de Software
+            Transforming the Future of Software Development
           </h2>
           <p className="text-lg">
-            Capacitar desenvolvedores com IA avançada para otimizar o
-            desenvolvimento de software.
+            Empowering developers with advanced AI to optimize software development.
           </p>
         </section>
 
         <section id="services" className="my-12">
-          <h2 className="text-3xl font-bold mb-4">Inovação constante</h2>
+          <h2 className="text-3xl font-bold mb-4">Constant Innovation</h2>
           <p className="text-lg">
-            Transforme Suas Ideias em Realidade com AdaDev!
+            Turn Your Ideas into Reality with AdaDev!
           </p>
         </section>
       </main>

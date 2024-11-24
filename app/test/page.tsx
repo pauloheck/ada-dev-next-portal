@@ -1,10 +1,8 @@
 "use client";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -59,7 +57,9 @@ export default function TestPage() {
         </div>
       )}
       <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8 relative">
-        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">Create Test</h1>
+        <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
+          Create Test
+        </h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
@@ -80,8 +80,14 @@ export default function TestPage() {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isLoading} className={`w-full ${isLoading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'} text-white font-bold py-2 px-4 rounded transition duration-300`}>
-              {isLoading ? 'Processing...' : 'Generate'}
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full ${
+                isLoading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
+              } text-white font-bold py-2 px-4 rounded transition duration-300`}
+            >
+              {isLoading ? "Processing..." : "Generate"}
             </Button>
           </form>
         </Form>
@@ -90,21 +96,32 @@ export default function TestPage() {
         <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg space-y-4">
           {apiResponse.data.stories.map((story: any, index: number) => (
             <div key={index} className="p-4 bg-gray-100 rounded-md">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800">{story.title}</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                {story.title}
+              </h2>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Contexto:</strong> {story.context}
+                <strong className="text-gray-900">Contexto:</strong>{" "}
+                {story.context}
               </p>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Identificação do Usuário:</strong> {story.user_identification}
+                <strong className="text-gray-900">
+                  Identificação do Usuário:
+                </strong>{" "}
+                {story.user_identification}
               </p>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Criterios de Aceitação:</strong> {story.acceptance_criteria}
+                <strong className="text-gray-900">
+                  Criterios de Aceitação:
+                </strong>{" "}
+                {story.acceptance_criteria}
               </p>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Fluxo da História:</strong> {story.story_flow}
+                <strong className="text-gray-900">Fluxo da História:</strong>{" "}
+                {story.story_flow}
               </p>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Resultado Esperado:</strong> {story.expected_result}
+                <strong className="text-gray-900">Resultado Esperado:</strong>{" "}
+                {story.expected_result}
               </p>
             </div>
           ))}

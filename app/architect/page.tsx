@@ -93,7 +93,7 @@ export default function ArchitectPage() {
           </form>
         </Form>
       </div>
-      {apiResponse && (
+      {apiResponse && apiResponse.data && (
         <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg">
           <h2 className="text-2xl font-bold mb-4 text-gray-800">{apiResponse.data.title}</h2>
           <p className="mb-4 text-gray-700">

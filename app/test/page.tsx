@@ -97,36 +97,32 @@ export default function TestPage() {
         </Form>
       </div>
      
-      {apiResponse &&  (
+      {apiResponse && (
         <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg space-y-4">
-          {apiResponse.data.test_cases.map((test: any, index: number) => (
+          {apiResponse.test_cases.map((test: any, index: number) => (
             <div key={index} className="p-4 bg-gray-100 rounded-md">
               <h2 className="text-2xl font-bold mb-4 text-gray-800">
-                {test.title}
+                {test.test_case_id}
               </h2>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Contexto:</strong>{" "}
-                {test.context}
+                <strong className="text-gray-900">Descrição:</strong>{" "}
+                {test.description}
               </p>
               <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">
-                  Identificação do Usuário:
-                </strong>{" "}
-                {test.user_identification}
-              </p>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">
-                  Criterios de Aceitação:
-                </strong>{" "}
-                {test.acceptance_criteria}
-              </p>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Fluxo da História:</strong>{" "}
-                {test.story_flow}
+                <strong className="text-gray-900">Passos:</strong>{" "}
+                {test.steps}
               </p>
               <p className="mb-4 text-gray-700">
                 <strong className="text-gray-900">Resultado Esperado:</strong>{" "}
                 {test.expected_result}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Resultado Atual:</strong>{" "}
+                {test.actual_result || "N/A"}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Status:</strong>{" "}
+                {test.status || "N/A"}
               </p>
             </div>
           ))}

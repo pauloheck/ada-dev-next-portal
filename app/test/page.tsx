@@ -40,7 +40,7 @@ export default function TestPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Resposta completa da API:", data);
+        console.log("Resposta da API:", data);
         if (!data.success) {
           console.error("Detalhes do erro:", data);
         } else {
@@ -96,43 +96,40 @@ export default function TestPage() {
           </form>
         </Form>
       </div>
-      {apiResponse && (
+     
+      {apiResponse &&  (
         <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg space-y-4">
-          {apiResponse.data ? (
-            apiResponse.data.map((test: any, index: number) => (
-              <div key={index} className="p-4 bg-gray-100 rounded-md">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">
-                  {test.title}
-                </h2>
-                <p className="mb-4 text-gray-700">
-                  <strong className="text-gray-900">Contexto:</strong>{" "}
-                  {test.context}
-                </p>
-                <p className="mb-4 text-gray-700">
-                  <strong className="text-gray-900">
-                    Identificação do Usuário:
-                  </strong>{" "}
-                  {test.user_identification}
-                </p>
-                <p className="mb-4 text-gray-700">
-                  <strong className="text-gray-900">
-                    Criterios de Aceitação:
-                  </strong>{" "}
-                  {test.acceptance_criteria}
-                </p>
-                <p className="mb-4 text-gray-700">
-                  <strong className="text-gray-900">Fluxo da História:</strong>{" "}
-                  {test.story_flow}
-                </p>
-                <p className="mb-4 text-gray-700">
-                  <strong className="text-gray-900">Resultado Esperado:</strong>{" "}
-                  {test.expected_result}
-                </p>
-              </div>
-            ))
-          ) : (
-            <pre className="text-gray-700">{JSON.stringify(apiResponse, null, 2)}</pre>
-          )}
+          {apiResponse.data.test_cases.map((test: any, index: number) => (
+            <div key={index} className="p-4 bg-gray-100 rounded-md">
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                {test.title}
+              </h2>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Contexto:</strong>{" "}
+                {test.context}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">
+                  Identificação do Usuário:
+                </strong>{" "}
+                {test.user_identification}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">
+                  Criterios de Aceitação:
+                </strong>{" "}
+                {test.acceptance_criteria}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Fluxo da História:</strong>{" "}
+                {test.story_flow}
+              </p>
+              <p className="mb-4 text-gray-700">
+                <strong className="text-gray-900">Resultado Esperado:</strong>{" "}
+                {test.expected_result}
+              </p>
+            </div>
+          ))}
         </div>
       )}
     </div>

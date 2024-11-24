@@ -40,7 +40,7 @@ export default function TestPage() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Resposta da API:", data);
+        console.log("Resposta completa da API:", data);
         if (!data.success) {
           console.error("Detalhes do erro:", data);
         } else {

@@ -41,7 +41,11 @@ export default function TestPage() {
       .then((response) => response.json())
       .then((data) => {
         console.log("Resposta da API:", data);
-        setApiResponse(data);
+        if (!data.success) {
+          console.error("Detalhes do erro:", data);
+        } else {
+          setApiResponse(data);
+        }
       })
       .catch((error) => {
         console.error("Erro ao chamar a API:", error);

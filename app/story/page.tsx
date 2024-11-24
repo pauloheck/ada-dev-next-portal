@@ -48,10 +48,16 @@ export default function Teste() {
       .then((data) => {
         console.log("Resposta da API:", data);
         setApiResponse(data);
-        setErrorMessage("Ocorreu uma falha no processamento. Por favor, tente novamente.");
+        if (!data.success) {
+          console.error("Detalhes do erro:", data);
+          setErrorMessage("Ocorreu uma falha no processamento. Por favor, tente novamente.");
+        } else {
+          setApiResponse(data);
+        }
       })
       .catch((error) => {
         console.error("Erro ao chamar a API:", error);
+        setErrorMessage("Erro ao chamar a API. Por favor, tente novamente.");
       })
       .finally(() => setIsLoading(false));
   }

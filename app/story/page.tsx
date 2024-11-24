@@ -25,6 +25,7 @@ const formSchema = z.object({
 export default function Teste() {
   const [apiResponse, setApiResponse] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,6 +48,7 @@ export default function Teste() {
       .then((data) => {
         console.log("Resposta da API:", data);
         setApiResponse(data);
+        setErrorMessage("Ocorreu uma falha no processamento. Por favor, tente novamente.");
       })
       .catch((error) => {
         console.error("Erro ao chamar a API:", error);
@@ -59,6 +61,11 @@ export default function Teste() {
       {isLoading && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-64 w-64"></div>
+        </div>
+      )}
+      {errorMessage && (
+        <div className="text-red-500 text-center mt-4">
+          {errorMessage}
         </div>
       )}
       <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8 relative">

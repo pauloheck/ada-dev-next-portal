@@ -30,27 +30,26 @@ export default function TestPage() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
-    fetch(`${apiUrl}/test/create?input=${values.requisitos}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Resposta da API:", data);
-        if (!data.success) {
-          console.error("Detalhes do erro:", data);
-        } else {
-          setApiResponse(data);
-        }
-      })
-      .catch((error) => {
-        console.error("Erro ao chamar a API:", error);
-      })
-      .finally(() => setIsLoading(false));
+    /*
+    api call http://127.0.0.1:8000/test/create?input=${values.requisitos}
+method: POST
+request body: {
+   "status": "string",
+   "data": {
+     "test_cases": [
+      {
+         "test_case_id":"string",
+         "description":"string",
+         "steps":"string",
+         "expected_result":"string",
+         "actual_result":"string",
+         "status":"string"
+      }
+   ]
+}
+}
+
+*/
   }
 
   return (
@@ -96,38 +95,6 @@ export default function TestPage() {
           </form>
         </Form>
       </div>
-     
-      {apiResponse && (
-        <div className="max-w-2xl w-full p-6 bg-white shadow-lg rounded-lg space-y-4">
-          {apiResponse.test_cases.map((test: any, index: number) => (
-            <div key={index} className="p-4 bg-gray-100 rounded-md">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800">
-                {test.test_case_id}
-              </h2>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Descrição:</strong>{" "}
-                {test.description}
-              </p>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Passos:</strong>{" "}
-                {test.steps}
-              </p>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Resultado Esperado:</strong>{" "}
-                {test.expected_result}
-              </p>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Resultado Atual:</strong>{" "}
-                {test.actual_result || "N/A"}
-              </p>
-              <p className="mb-4 text-gray-700">
-                <strong className="text-gray-900">Status:</strong>{" "}
-                {test.status || "N/A"}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
